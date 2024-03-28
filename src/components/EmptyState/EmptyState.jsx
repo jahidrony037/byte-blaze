@@ -1,9 +1,13 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const EmptyState = ({ message, address, label }) => {
   return (
     <div className="min-h-[calc(100vh-120px)] gap-5 flex flex-col justify-center items-center pb-16 ">
+      <Helmet>
+        <title>Empty {`${label}`}</title>
+      </Helmet>
       <p className="text-gray-600 text-xl lg:text-3xl">{message}</p>
 
       <Link

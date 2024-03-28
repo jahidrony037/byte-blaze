@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 
 const Author = () => {
@@ -13,6 +14,9 @@ const Author = () => {
   } = blog.user;
   return (
     <div className="flex flex-col justify-center  p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800">
+      <Helmet>
+        <title>Blog | {`${name}`}</title>
+      </Helmet>
       <img
         src={profile_image}
         alt={`${name} pic`}

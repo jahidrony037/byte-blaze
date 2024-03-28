@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { MdBookmarkAdd } from "react-icons/md";
 import { Link, Outlet, useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -6,7 +7,7 @@ import { saveBlog } from "../../utilites/localstorage";
 const BlogDetails = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const blog = useLoaderData();
-  // console.log(blog);
+  console.log(blog);
   const {
     title,
     user,
@@ -14,6 +15,7 @@ const BlogDetails = () => {
     reading_time_minutes,
     public_reactions_count,
     comments_count,
+    id,
   } = blog;
 
   const handleBookMark = (blog) => {
@@ -29,6 +31,9 @@ const BlogDetails = () => {
   };
   return (
     <div className="max-w-3xl px-6 py-16 mx-auto space-y-12">
+      <Helmet>
+        <title>Blog Details{`${id}`}</title>
+      </Helmet>
       <article className="space-y-8 dark:bg-gray-100 dark:text-gray-900">
         <div className="space-y-6">
           <h1 className="text-4xl font-bold md:tracking-tight md:text-5xl">

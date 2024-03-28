@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData, useNavigation } from "react-router-dom";
 import Blog from "../../components/Blog/Blog";
 import Loader from "../../components/Loader/Loader";
@@ -11,6 +12,9 @@ const Blogs = () => {
 
   return (
     <section className="dark:bg-gray-100 dark:text-gray-800">
+      <Helmet>
+        <title>Blogs</title>
+      </Helmet>
       <div className="container max-w-6xl py-6 mx-auto space-y-6 sm:space-y-12">
         <Link
           to={blogs[0].url}
@@ -32,8 +36,12 @@ const Blogs = () => {
           </div>
         </Link>
         <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {blogs.slice(1,19).map((blog) => (
-            <Blog key={blog.id} blog={blog}></Blog>
+          {blogs.slice(1, 19).map((blog) => (
+            <Blog key={blog.id} blog={blog}>
+              <Helmet>
+                <title>Blog {`${blog.id}`}</title>
+              </Helmet>
+            </Blog>
           ))}
         </div>
       </div>
